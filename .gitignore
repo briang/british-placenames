@@ -69,3 +69,5 @@ anaconda-mode/
 
 
 # End of https://www.gitignore.io/api/emacs
+
+*/data.db
