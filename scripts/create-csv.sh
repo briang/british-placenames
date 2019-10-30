@@ -7,4 +7,4 @@ FROM data
 WHERE type = 'populatedPlace'
 ORDER BY name, country"
 
-sqlite3 $DB_FILE ".mode csv" ".headers on" "$SQL" | sed -e 's/\r//g' > places.csv
+sqlite3 -csv -header $DB_FILE "$SQL" | sed -e 's/\r//g' > places.csv

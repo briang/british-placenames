@@ -8,10 +8,10 @@ TABLE="data"
 
 [[ -e $DB_FILE ]] && rm $DB_FILE
 
-sqlite3 $DB_FILE ".mode csv" ".import $HEADERS $TABLE"
+sqlite3 -csv $DB_FILE ".import $HEADERS $TABLE"
 
 for F in $DATA_GLOB ; do
     echo "importing $F..."
-    sqlite3 $DB_FILE ".mode csv" ".import $F $TABLE"
+    sqlite3 -csv $DB_FILE ".import $F $TABLE"
     sqlite3 $DB_FILE "select count(*) from $TABLE where type='populatedPlace'"
 done
